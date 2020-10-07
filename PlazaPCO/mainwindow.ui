@@ -20,11 +20,10 @@
    <string>Plaza PCO Sunum Kayit</string>
   </property>
   <property name="styleSheet">
-   <string notr="true">font-family: consolas;
-</string>
+   <string notr="true">font-family: sans-serif;</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QFrame" name="frame">
+   <widget class="QFrame" name="masno">
     <property name="geometry">
      <rect>
       <x>30</x>
@@ -53,8 +52,7 @@
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">font-family: consolas;
-font-size: 15px;
+     <string notr="true">font-size: 15px;
 color : black;</string>
     </property>
     <property name="text">
@@ -104,24 +102,29 @@ font-size: 12px;</string>
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">white-space: normal;
-word-wrap: break-word;</string>
+     <string notr="true"/>
     </property>
     <property name="text">
      <string>Open Video
  Folder</string>
     </property>
    </widget>
-  </widget>
-  <widget class="QMenuBar" name="menubar">
-   <property name="geometry">
-    <rect>
-     <x>0</x>
-     <y>0</y>
-     <width>300</width>
-     <height>19</height>
-    </rect>
-   </property>
+   <widget class="QWidget" name="frame" native="true">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>380</y>
+      <width>261</width>
+      <height>181</height>
+     </rect>
+    </property>
+    <property name="cursor">
+     <cursorShape>ArrowCursor</cursorShape>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-image: url(:/images/plaza_seffaf2.png);</string>
+    </property>
+   </widget>
   </widget>
  </widget>
  <resources/>
