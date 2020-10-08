@@ -20,7 +20,7 @@
    <string>Plaza PCO Sunum Kayit</string>
   </property>
   <property name="styleSheet">
-   <string notr="true">font-family: sans-serif;</string>
+   <string notr="true">font-family: Arial;</string>
   </property>
   <widget class="QWidget" name="centralwidget">
    <widget class="QFrame" name="masno">
