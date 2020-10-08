@@ -6,7 +6,7 @@ MainWindow::MainWindow(QWidget *parent)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-    //ui->pushButton->setStyleSheet("* { }");
+   // ui->pushButton->setStyleSheet("* {background-image: url(":/User/Desktop/plaza_seffaf.png") }");
 }
 
 MainWindow::~MainWindow()

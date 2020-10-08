@@ -1,0 +1,6 @@
+<RCC>
+    <qresource prefix="/images">
+        <file>plaza_seffaf.png</file>
+        <file>plaza_seffaf2.png</file>
+    </qresource>
+</RCC>
