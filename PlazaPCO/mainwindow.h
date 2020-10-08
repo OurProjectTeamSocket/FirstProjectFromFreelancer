@@ -2,6 +2,9 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include <QDateTime>
+#include <QProcess>
+#include <QtDebug>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -17,7 +20,7 @@ public:
 
     void Recording();
 
-    void Convertiong();
+    void Converting();
 
 private slots:
     void on_pushButton_clicked();
@@ -26,5 +29,12 @@ private:
     Ui::MainWindow *ui;
 
     bool recording = false;
+
+    std::string date;
+
+    QProcess rec;
+    QProcess con;
+
 };
+
 #endif // MAINWINDOW_H
