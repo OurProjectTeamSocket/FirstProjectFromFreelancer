@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>300</width>
+    <width>371</width>
     <height>600</height>
    </rect>
   </property>
@@ -20,20 +20,22 @@
    <string>Plaza PCO Sunum Kayit</string>
   </property>
   <property name="styleSheet">
-   <string notr="true">font-family: Arial;</string>
+   <string notr="true">font-family: Arial;
+background: rgb(255, 255, 255);</string>
   </property>
   <widget class="QWidget" name="centralwidget">
    <widget class="QFrame" name="masno">
     <property name="geometry">
      <rect>
-      <x>30</x>
+      <x>10</x>
       <y>70</y>
-      <width>240</width>
-      <height>150</height>
+      <width>351</width>
+      <height>201</height>
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">background: gray;</string>
+     <string notr="true">background: white;
+border: 1px solid black;</string>
     </property>
     <property name="frameShape">
      <enum>QFrame::StyledPanel</enum>
@@ -45,14 +47,14 @@
    <widget class="QLabel" name="label">
     <property name="geometry">
      <rect>
-      <x>90</x>
+      <x>120</x>
       <y>30</y>
-      <width>131</width>
-      <height>16</height>
+      <width>141</width>
+      <height>31</height>
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">font-size: 15px;
+     <string notr="true">font-size: 16px;
 color : black;</string>
     </property>
     <property name="text">
@@ -62,8 +64,8 @@ color : black;</string>
    <widget class="QPushButton" name="pushButton">
     <property name="geometry">
      <rect>
-      <x>90</x>
-      <y>230</y>
+      <x>130</x>
+      <y>280</y>
       <width>111</width>
       <height>31</height>
      </rect>
@@ -78,8 +80,8 @@ color : black;</string>
    <widget class="QLabel" name="label_2">
     <property name="geometry">
      <rect>
-      <x>100</x>
-      <y>550</y>
+      <x>140</x>
+      <y>560</y>
       <width>181</width>
       <height>61</height>
      </rect>
@@ -95,8 +97,8 @@ font-size: 12px;</string>
    <widget class="QToolButton" name="toolButton">
     <property name="geometry">
      <rect>
-      <x>220</x>
-      <y>230</y>
+      <x>290</x>
+      <y>280</y>
       <width>71</width>
       <height>31</height>
      </rect>
@@ -112,10 +114,10 @@ font-size: 12px;</string>
    <widget class="QWidget" name="frame" native="true">
     <property name="geometry">
      <rect>
-      <x>10</x>
-      <y>380</y>
+      <x>40</x>
+      <y>410</y>
       <width>261</width>
-      <height>181</height>
+      <height>171</height>
      </rect>
     </property>
     <property name="cursor">
@@ -123,6 +125,40 @@ font-size: 12px;</string>
     </property>
     <property name="styleSheet">
      <string notr="true">background-image: url(:/images/plaza_seffaf2.png);</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_3">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>280</y>
+      <width>61</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">font-size: 14px;
+color: rgb(142, 190, 223);</string>
+    </property>
+    <property name="text">
+     <string>Time: </string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_4">
+    <property name="geometry">
+     <rect>
+      <x>120</x>
+      <y>320</y>
+      <width>141</width>
+      <height>51</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">font-size: 25px;
+color: red;</string>
+    </property>
+    <property name="text">
+     <string>Recording..</string>
     </property>
    </widget>
   </widget>
