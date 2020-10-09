@@ -1,7 +1,12 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
+#include <QDesktopServices>
 #include <QMainWindow>
+#include <QDateTime>
+#include <QProcess>
+#include <QtDebug>
+#include <QUrl>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -15,16 +20,28 @@ public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 
-    void Recording();
+    void Converting();
 
-    void Convertiong();
+public slots:
+    void Recording();
 
 private slots:
     void on_pushButton_clicked();
+
+    void on_toolButton_clicked();
 
 private:
     Ui::MainWindow *ui;
 
     bool recording = false;
+
+    QString date;
+
+    QProcess Qrec;
+    QProcess Qcon;
+
+    std::string Path = getenv("HOME");
+
 };
+
 #endif // MAINWINDOW_H

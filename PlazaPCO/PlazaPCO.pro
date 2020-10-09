@@ -1,4 +1,7 @@
-QT       += core gui
+QT       += core gui concurrent
+
+TEMPLATE = app
+TARGET = main
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
