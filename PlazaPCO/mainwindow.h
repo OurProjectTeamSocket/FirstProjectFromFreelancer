@@ -18,9 +18,10 @@ public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 
-    void Recording();
-
     void Converting();
+
+public slots:
+    void Recording();
 
 private slots:
     void on_pushButton_clicked();
@@ -30,10 +31,12 @@ private:
 
     bool recording = false;
 
-    std::string date;
+    QString date;
 
-    QProcess rec;
-    QProcess con;
+    QProcess Qrec;
+    QProcess Qcon;
+
+    std::string Path = getenv("HOME");
 
 };
 
