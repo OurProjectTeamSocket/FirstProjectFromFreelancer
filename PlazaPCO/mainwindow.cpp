@@ -68,3 +68,9 @@ void MainWindow::on_pushButton_clicked()
     }
 
 }
+
+void MainWindow::on_toolButton_clicked()
+{
+    std::string x = "open " + Path + "/Desktop/PlazaPCO/";
+    system(x.c_str());
+;}

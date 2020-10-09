@@ -1,10 +1,12 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
+#include <QDesktopServices>
 #include <QMainWindow>
 #include <QDateTime>
 #include <QProcess>
 #include <QtDebug>
+#include <QUrl>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -25,6 +27,8 @@ public slots:
 
 private slots:
     void on_pushButton_clicked();
+
+    void on_toolButton_clicked();
 
 private:
     Ui::MainWindow *ui;
