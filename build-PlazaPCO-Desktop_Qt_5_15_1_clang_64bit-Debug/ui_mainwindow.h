@@ -30,8 +30,8 @@ public:
     QLabel *label_2;
     QToolButton *toolButton;
     QWidget *frame;
-    QLabel *label_3;
-    QLabel *label_4;
+    QLabel *TimeLabel;
+    QLabel *RecordingLabel;
 
     void setupUi(QMainWindow *MainWindow)
     {
@@ -39,6 +39,9 @@ public:
             MainWindow->setObjectName(QString::fromUtf8("MainWindow"));
         MainWindow->resize(371, 600);
         MainWindow->setMaximumSize(QSize(16777215, 16777215));
+        QFont font;
+        font.setFamily(QString::fromUtf8("Arial"));
+        MainWindow->setFont(font);
         MainWindow->setStyleSheet(QString::fromUtf8("font-family: Arial;\n"
 "background: rgb(255, 255, 255);"));
         centralwidget = new QWidget(MainWindow);
@@ -72,16 +75,16 @@ public:
         frame->setObjectName(QString::fromUtf8("frame"));
         frame->setGeometry(QRect(40, 410, 261, 171));
         frame->setCursor(QCursor(Qt::ArrowCursor));
-        frame->setStyleSheet(QString::fromUtf8("background-image: url(:/images/plaza_seffaf2.png);"));
-        label_3 = new QLabel(centralwidget);
-        label_3->setObjectName(QString::fromUtf8("label_3"));
-        label_3->setGeometry(QRect(10, 280, 61, 21));
-        label_3->setStyleSheet(QString::fromUtf8("font-size: 14px;\n"
+        frame->setStyleSheet(QString::fromUtf8("background-image: url(:/images/logo.png);"));
+        TimeLabel = new QLabel(centralwidget);
+        TimeLabel->setObjectName(QString::fromUtf8("TimeLabel"));
+        TimeLabel->setGeometry(QRect(10, 280, 61, 21));
+        TimeLabel->setStyleSheet(QString::fromUtf8("font-size: 14px;\n"
 "color: rgb(142, 190, 223);"));
-        label_4 = new QLabel(centralwidget);
-        label_4->setObjectName(QString::fromUtf8("label_4"));
-        label_4->setGeometry(QRect(120, 320, 141, 51));
-        label_4->setStyleSheet(QString::fromUtf8("font-size: 25px;\n"
+        RecordingLabel = new QLabel(centralwidget);
+        RecordingLabel->setObjectName(QString::fromUtf8("RecordingLabel"));
+        RecordingLabel->setGeometry(QRect(120, 320, 141, 51));
+        RecordingLabel->setStyleSheet(QString::fromUtf8("font-size: 25px;\n"
 "color: red;"));
         MainWindow->setCentralWidget(centralwidget);
 
@@ -98,8 +101,8 @@ public:
         label_2->setText(QCoreApplication::translate("MainWindow", "Text Line 123", nullptr));
         toolButton->setText(QCoreApplication::translate("MainWindow", "Open Video\n"
 " Folder", nullptr));
-        label_3->setText(QCoreApplication::translate("MainWindow", "Time: ", nullptr));
-        label_4->setText(QCoreApplication::translate("MainWindow", "Recording..", nullptr));
+        TimeLabel->setText(QCoreApplication::translate("MainWindow", "Time: ", nullptr));
+        RecordingLabel->setText(QCoreApplication::translate("MainWindow", "Recording..", nullptr));
     } // retranslateUi
 
 };

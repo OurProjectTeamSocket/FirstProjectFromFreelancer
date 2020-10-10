@@ -8,7 +8,8 @@ MainWindow::MainWindow(QWidget *parent)
     ui->setupUi(this);
     system(std::string("cd ~/Desktop/ && mkdir PlazaPCO").c_str());
 
-    ui->pushButton_2->setVisible(false);
+    ui->TimeLabel->setVisible(false);
+    ui->RecordingLabel->setVisible(false);
 
 }
 

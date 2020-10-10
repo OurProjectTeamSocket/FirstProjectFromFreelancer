@@ -128,27 +128,11 @@ font-size: 12px;</string>
     <property name="cursor">
      <cursorShape>ArrowCursor</cursorShape>
     </property>
-   </widget>
-   <widget class="QPushButton" name="pushButton_2">
-    <property name="enabled">
-     <bool>true</bool>
-    </property>
-    <property name="geometry">
-     <rect>
-      <x>90</x>
-      <y>230</y>
-      <width>111</width>
-      <height>31</height>
-     </rect>
-    </property>
     <property name="styleSheet">
-     <string notr="true">font-size: 15px;</string>
-    </property>
-    <property name="text">
-     <string>Record</string>
+     <string notr="true">background-image: url(:/images/logo.png);</string>
     </property>
    </widget>
-   <widget class="QLabel" name="label_3">
+   <widget class="QLabel" name="TimeLabel">
     <property name="geometry">
      <rect>
       <x>10</x>
@@ -165,7 +149,7 @@ color: rgb(142, 190, 223);</string>
      <string>Time: </string>
     </property>
    </widget>
-   <widget class="QLabel" name="label_4">
+   <widget class="QLabel" name="RecordingLabel">
     <property name="geometry">
      <rect>
       <x>120</x>
