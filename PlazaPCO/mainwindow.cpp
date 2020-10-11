@@ -20,14 +20,19 @@ MainWindow::MainWindow(QWidget *parent)
     qCam.start();
     qCam.waitForFinished();
 
-    QFile lfile(QString::fromStdString(Path) + "/Desktop/ScreenRecorder/Logo/logo.txt");
+    QString url = R"(home/jonsnieg/Pulpit/FirstProjectFromFreelancer-main/PlazaPCO/images/logo.png)";
+    QPixmap img(url);
+    QLabel *label = new QLabel(this);
+    label->setPixmap(img);
+
+    QFile lfile(QString::fromStdString(Path) + "/Desktop/Logo.txt");
     if (!lfile.open(QIODevice::ReadOnly | QIODevice::Text))
         return;
 
     QTextStream lin(&lfile);
     while (!lin.atEnd()) {
         logo = lin.readLine();
-
+        qDebug() << logo;
     }
 
     QFile rfile(QString::fromStdString(Path) + "/Desktop/ScreenRecorder/Logo/logo.txt");

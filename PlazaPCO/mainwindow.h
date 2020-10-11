@@ -10,6 +10,7 @@
 #include <QTime>
 #include <QFile>
 #include <QUrl>
+#include <QPixmap>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -55,6 +56,12 @@ private:
      QTime timeElapsed;
 
      QTime photosTime;
+
+     QString  logo;
+
+     QString redtext;
+
+     QString Image = QString::fromStdString(Path) + "/Desktop";
 
 };
 
