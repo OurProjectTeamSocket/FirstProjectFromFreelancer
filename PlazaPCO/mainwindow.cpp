@@ -33,10 +33,10 @@ void MainWindow::Recording(){
 
     Qrec.setProcessChannelMode(QProcess::MergedChannels);
     Qrec.setProgram( QString::fromStdString(Path) + "/Desktop/PlazaPCO/ffmpeg");
-    Qrec.setArguments({"-loop", "1", "-i", "/Users/nintyswinty/Downloads/1280x720-rich-electric-blue-solid-color-background.jpg", "-f", "avfoundation", "-i", "1", "-f", "avfoundation", "-i", "0", "-filter_complex", "[1:v]scale=960:600[a]; \
+    Qrec.setArguments({"-loop", "1", "-i", QString::fromStdString(Path) + "/Desktop/PlazaPCO/background.jpg", "-framerate", "30", "-f", "avfoundation", "-i", "1", "-framerate", "30", "-f", "avfoundation", "-i", "0", "-filter_complex", "[1:v]scale=960:600[a]; \
                        [2:v]scale=240:150[b]; \
                        [0:v][a]overlay=32:88:shortest=1[c]; \
-                       [c][b]overlay=main_w-overlay_w-10:(main_h/2)-(overlay_h/2)[video]" , "-map", "[video]", QString::fromStdString(Path) + "/Desktop/PlazaPCO/" + date + ".mkv"});
+                       [c][b]overlay=main_w-overlay_w-10:(main_h/2)-(overlay_h/3)[video]", "-map", "[video]", QString::fromStdString(Path) + "/Desktop/PlazaPCO/" + date + ".mkv"});
     Qrec.start();
     Qrec.waitForFinished();
 
@@ -93,4 +93,4 @@ void MainWindow::on_toolButton_clicked()
 {
     std::string x = "open " + Path + "/Desktop/PlazaPCO/";
     system(x.c_str());
-;}
+}
