@@ -20,7 +20,25 @@ MainWindow::MainWindow(QWidget *parent)
     qCam.start();
     qCam.waitForFinished();
 
-    ui->frame->setStyleSheet("#Widget { background-image: url(cam.png) }");
+    QFile lfile(QString::fromStdString(Path) + "/Desktop/ScreenRecorder/Logo/logo.txt");
+    if (!lfile.open(QIODevice::ReadOnly | QIODevice::Text))
+        return;
+
+    QTextStream lin(&lfile);
+    while (!lin.atEnd()) {
+        logo = lin.readLine();
+
+    }
+
+    QFile rfile(QString::fromStdString(Path) + "/Desktop/ScreenRecorder/Logo/logo.txt");
+    if (!rfile.open(QIODevice::ReadOnly | QIODevice::Text))
+        return;
+
+    QTextStream rin(&rfile);
+    while (!rin.atEnd()) {
+        redtext = rin.readLine();
+
+    }
 
 }
 

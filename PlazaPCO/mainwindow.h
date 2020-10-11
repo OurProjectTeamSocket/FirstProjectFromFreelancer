@@ -8,6 +8,7 @@
 #include <QtDebug>
 #include <QTimer>
 #include <QTime>
+#include <QFile>
 #include <QUrl>
 
 QT_BEGIN_NAMESPACE
