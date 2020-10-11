@@ -26,8 +26,7 @@
   </property>
   <property name="styleSheet">
    <string notr="true">font-family: Arial;
-background: rgb(255, 255, 255);
-color: black;</string>
+background: rgb(255, 255, 255);</string>
   </property>
   <widget class="QWidget" name="centralwidget">
    <widget class="QFrame" name="masno">
@@ -138,7 +137,7 @@ font-size: 12px;</string>
      <rect>
       <x>10</x>
       <y>280</y>
-      <width>101</width>
+      <width>61</width>
       <height>21</height>
      </rect>
     </property>

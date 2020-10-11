@@ -7,12 +7,20 @@ MainWindow::MainWindow(QWidget *parent)
 {
     ui->setupUi(this);
     system(std::string("cd ~/Desktop/ && mkdir PlazaPCO").c_str());
+    system(std::string("cd ~/Desktop/PlazaPCO && mkdir background ").c_str());
 
     ui->TimeLabel->setVisible(false);
     ui->RecordingLabel->setVisible(false);
 
-    QTimer *timer = new QTimer(this);
     connect(timer, &QTimer::timeout, this, QOverload<>::of(&MainWindow::timeFunc));
+
+    qCam.setProcessChannelMode(QProcess::MergedChannels);
+    qCam.setProgram( QString::fromStdString(Path) + "/Desktop/PlazaPCO/ffmpeg");
+    qCam.setArguments({"-f", "avfoundation", "-framerate", "1", "-pixel_format", "yuyv422", "-i", "0", QString::fromStdString(Path) + "/Desktop/PlazaPCO/cam.png"});
+    qCam.start();
+    qCam.waitForFinished();
+
+    ui->frame->setStyleSheet("#Widget { background-image: url(cam.png) }");
 
 }
 
@@ -22,25 +30,23 @@ MainWindow::~MainWindow()
 }
 
 void MainWindow::timeFunc() {
-    timeElapsed = timeElapsed.addSecs(1);
-    ui->TimeLabel->setText("Time: " + timeElapsed.toString("hh:mm:ss"));
-    qDebug() << timeElapsed.toString("hh:mm:ss");
+    ui->pushButton->setStyleSheet("* { background-color: rgb(255,255,255) }");
 }
 
 void MainWindow::Recording(){
 
     qDebug() << "Nagrywam!";
 
-    Qrec.setProcessChannelMode(QProcess::MergedChannels);
-    Qrec.setProgram( QString::fromStdString(Path) + "/Desktop/PlazaPCO/ffmpeg");
-    Qrec.setArguments({"-loop", "1", "-i", QString::fromStdString(Path) + "/Desktop/PlazaPCO/background.jpg", "-framerate", "30", "-f", "avfoundation", "-i", "1", "-framerate", "30", "-f", "avfoundation", "-i", "0", "-filter_complex", "[1:v]scale=960:600[a]; \
+    qRec.setProcessChannelMode(QProcess::MergedChannels);
+    qRec.setProgram( QString::fromStdString(Path) + "/Desktop/PlazaPCO/ffmpeg");
+    qRec.setArguments({"-loop", "1", "-i", QString::fromStdString(Path) + "/Desktop/PlazaPCO/background.jpg", "-framerate", "30", "-f", "avfoundation", "-i", "1", "-framerate", "30", "-f", "avfoundation", "-i", "0", "-filter_complex", "[1:v]scale=960:600[a]; \
                        [2:v]scale=240:150[b]; \
-                       [0:v][a]overlay=32:88:shortest=1[c]; \
-                       [c][b]overlay=main_w-overlay_w-10:(main_h/2)-(overlay_h/3)[video]", "-map", "[video]", QString::fromStdString(Path) + "/Desktop/PlazaPCO/" + date + ".mkv"});
-    Qrec.start();
-    Qrec.waitForFinished();
+                       [0:v][a]overlay=32:60:shortest=1[c]; \
+                       [c][b]overlay=main_w-overlay_w-10:(main_h/2)-75[video]", "-map", "[video]", QString::fromStdString(Path) + "/Desktop/PlazaPCO/" + date + ".mkv"});
+    qRec.start();
+    qRec.waitForFinished();
 
-    qDebug() << "Koniec: " << Qrec.readAllStandardOutput();
+    qDebug() << "Koniec: " << qRec.readAllStandardOutput();
 
 }
 
@@ -48,13 +54,13 @@ void MainWindow::Converting(){
 
     qDebug() << "Konwertuję!";
 
-    Qcon.setProcessChannelMode(QProcess::MergedChannels);
-    Qcon.setProgram( QString::fromStdString(Path) + "/Desktop/PlazaPCO/ffmpeg");
-    Qcon.setArguments({"-loglevel", "panic", "-i", QString::fromStdString(Path) + "/Desktop/PlazaPCO/" + date + ".mkv", "-codec", "copy", QString::fromStdString(Path) + "/Desktop/PlazaPCO/" + date + ".mp4"});
-    Qcon.start();
-    Qcon.waitForFinished();
+    qCon.setProcessChannelMode(QProcess::MergedChannels);
+    qCon.setProgram( QString::fromStdString(Path) + "/Desktop/PlazaPCO/ffmpeg");
+    qCon.setArguments({"-loglevel", "panic", "-i", QString::fromStdString(Path) + "/Desktop/PlazaPCO/" + date + ".mkv", "-codec", "copy", QString::fromStdString(Path) + "/Desktop/PlazaPCO/" + date + ".mp4"});
+    qCon.start();
+    qCon.waitForFinished();
 
-    qDebug() << "Koniec: " << Qcon.readAllStandardOutput();
+    qDebug() << "Koniec: " << qCon.readAllStandardOutput();
 
 }
 
@@ -69,7 +75,7 @@ void MainWindow::on_pushButton_clicked()
 
         qDebug() << date;
 
-        Qcon.terminate();
+        qCon.terminate();
         ui->pushButton->setStyleSheet("* { background-color: rgb(168, 11, 0) }");
         timer->start(1000);
         recording = true;
@@ -78,7 +84,7 @@ void MainWindow::on_pushButton_clicked()
         Recording();
     } else {
         timer->stop();
-        Qrec.terminate();
+        qRec.terminate();
         ui->pushButton->setStyleSheet("* { background-color: rgb(255,255,255) }");
         recording = false;
         ui->RecordingLabel->setVisible(false);

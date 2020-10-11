@@ -41,14 +41,19 @@ private:
 
     QString date;
 
-    QProcess Qrec;
-    QProcess Qcon;
+    QProcess qRec;
+    QProcess qCon;
+    QProcess qCam;
+
+    int elapsed = 0;
 
     std::string Path = getenv("HOME");
 
      QTimer *timer = new QTimer(this);
 
      QTime timeElapsed;
+
+     QTime photosTime;
 
 };
 
