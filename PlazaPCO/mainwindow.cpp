@@ -10,11 +10,22 @@ MainWindow::MainWindow(QWidget *parent)
     system(std::string("cd ~/Desktop/ && mkdir PlazaPCO").c_str());
     system(std::string("cd ~/Desktop/PlazaPCO && mkdir background ").c_str());
 
+    if(QLocale::Turkey){
+        QFile lfile(QString::fromStdString(Path) + "/Desktop/ScreenRecorder/");
+        if (!lfile.open(QIODevice::ReadOnly | QIODevice::Text)){
+            qDebug() << "1";
+            return;
+        }
+    } else {
+
+    }
+
     ui->TimeLabel->setVisible(false);
-    ui->RecordingLabel->setVisible(false);
+    ui->RecLabel->setVisible(false);
 
     connect(timer, &QTimer::timeout, this, QOverload<>::of(&MainWindow::timeFunc));
     connect(camTimer, &QTimer::timeout, this, QOverload<>::of(&MainWindow::GetPicFormCam));
+    connect(recTimer, &QTimer::timeout, this, QOverload<>::of(&MainWindow::recAnim));
     camTimer->start();
 
     QFile lfile(QString::fromStdString(Path) + "/Desktop/ScreenRecorder/Logo/logo.txt");
@@ -89,6 +100,35 @@ void MainWindow::GetPicFormCam(){
 
 }
 
+void MainWindow::recAnim(){
+    if(state == 0){
+        QString url = QString::fromStdString(Path) + "/Desktop/ScreenRecorder/Images/recording1.png";
+        qDebug() << url;
+        QPixmap img(url);
+        img.scaled(ui->LogoLabel->width(), ui->LogoLabel->height());
+        ui->RecLabel->setPixmap(img);
+        ui->RecLabel->setScaledContents(true);
+        ++state;
+    } else if(state == 1) {
+        QString url = QString::fromStdString(Path) + "/Desktop/ScreenRecorder/Images/recording2.png";
+        qDebug() << url;
+        QPixmap img(url);
+        img.scaled(ui->LogoLabel->width(), ui->LogoLabel->height());
+        ui->RecLabel->setPixmap(img);
+        ui->RecLabel->setScaledContents(true);
+        ++state;
+    } else {
+        QString url = QString::fromStdString(Path) + "/Desktop/ScreenRecorder/Images/recording3.png";
+        qDebug() << url;
+        QPixmap img(url);
+        img.scaled(ui->LogoLabel->width(), ui->LogoLabel->height());
+        ui->RecLabel->setPixmap(img);
+        ui->RecLabel->setScaledContents(true);
+        state = 0;
+    }
+
+}
+
 
 void MainWindow::Recording(){
 
@@ -101,7 +141,7 @@ void MainWindow::Recording(){
                        [0:v][a]overlay=32:60:shortest=1[c]; \
                        [c][b]overlay=main_w-overlay_w-10:(main_h/2)-75[video]", "-map", "[video]", QString::fromStdString(Path) + "/Desktop/ScreenRecorder/Output/" + date + ".mkv"});
     qRec.start();
-    qRec.waitForFinished();
+    qRec.waitForFinished(1);
 
     qDebug() << "Koniec: " << qRec.readAllStandardOutput();
 
@@ -135,17 +175,19 @@ void MainWindow::on_pushButton_clicked()
         qCon.terminate();
         ui->pushButton->setStyleSheet("* { background-color: rgb(168, 11, 0) }");
         timer->start(1000);
+        recTimer->start(500);
         recording = true;
-        ui->RecordingLabel->setVisible(true);
+        ui->RecLabel->setVisible(true);
         ui->TimeLabel->setVisible(true);
         timeElapsed.start();
         Recording();
     } else {
         timer->stop();
+        recTimer->stop();
         qRec.terminate();
         ui->pushButton->setStyleSheet("* { background-color: rgb(255,255,255) }");
         recording = false;
-        ui->RecordingLabel->setVisible(false);
+        ui->RecLabel->setVisible(false);
         ui->TimeLabel->setVisible(false);
         Converting();
     }

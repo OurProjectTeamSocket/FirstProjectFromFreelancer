@@ -120,23 +120,6 @@ color: rgb(142, 190, 223);</string>
      <string>Time: </string>
     </property>
    </widget>
-   <widget class="QLabel" name="RecordingLabel">
-    <property name="geometry">
-     <rect>
-      <x>120</x>
-      <y>320</y>
-      <width>141</width>
-      <height>51</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">font-size: 25px;
-color: red;</string>
-    </property>
-    <property name="text">
-     <string>Recording..</string>
-    </property>
-   </widget>
    <widget class="QLabel" name="LogoLabel">
     <property name="geometry">
      <rect>
@@ -162,6 +145,19 @@ color: red;</string>
     <property name="styleSheet">
      <string notr="true">background: white;
 border: 1px solid black;</string>
+    </property>
+    <property name="text">
+     <string>TextLabel</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="RecLabel">
+    <property name="geometry">
+     <rect>
+      <x>85</x>
+      <y>330</y>
+      <width>200</width>
+      <height>50</height>
+     </rect>
     </property>
     <property name="text">
      <string>TextLabel</string>

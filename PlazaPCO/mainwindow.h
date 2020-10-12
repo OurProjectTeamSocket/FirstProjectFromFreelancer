@@ -32,6 +32,8 @@ public:
 
     void GetPicFormCam();
 
+    void recAnim();
+
 public slots:
     void Recording();
 
@@ -57,6 +59,7 @@ private:
 
      QTimer *timer = new QTimer(this);
      QTimer *camTimer = new QTimer(this);
+     QTimer *recTimer = new QTimer(this);
 
      QTime timeElapsed;
 
@@ -72,6 +75,8 @@ private:
 
      cv::Mat frame;
      QImage qt_image;
+
+     int state = 0;
 
 };
 
