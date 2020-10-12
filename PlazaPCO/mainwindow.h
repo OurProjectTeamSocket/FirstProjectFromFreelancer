@@ -1,6 +1,9 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
+#include <opencv4/opencv2/core.hpp>
+#include <opencv4/opencv2/highgui.hpp>
+#include <opencv4/opencv2/imgproc.hpp>
 #include <QDesktopServices>
 #include <QMainWindow>
 #include <QDateTime>
@@ -20,12 +23,14 @@ class MainWindow : public QMainWindow
     Q_OBJECT
 
 public:
-    MainWindow(QWidget *parent = nullptr);
+    explicit MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 
     void timeFunc();
 
     void Converting();
+
+    void GetPicFormCam();
 
 public slots:
     void Recording();
@@ -51,10 +56,22 @@ private:
     std::string Path = getenv("HOME");
 
      QTimer *timer = new QTimer(this);
+     QTimer *camTimer = new QTimer(this);
 
      QTime timeElapsed;
 
      QTime photosTime;
+
+     QString logo;
+
+     QString redtext;
+
+     QString Image = QString::fromStdString(Path) + "/Desktop/ScreenRecorder/Images/";
+
+     cv::VideoCapture cap;
+
+     cv::Mat frame;
+     QImage qt_image;
 
 };
 

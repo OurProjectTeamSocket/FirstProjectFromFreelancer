@@ -6,14 +6,20 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>371</width>
+    <width>370</width>
     <height>600</height>
    </rect>
   </property>
+  <property name="minimumSize">
+   <size>
+    <width>370</width>
+    <height>600</height>
+   </size>
+  </property>
   <property name="maximumSize">
    <size>
-    <width>16777215</width>
-    <height>16777215</height>
+    <width>370</width>
+    <height>600</height>
    </size>
   </property>
   <property name="font">
@@ -29,32 +35,12 @@
 background: rgb(255, 255, 255);</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QFrame" name="masno">
-    <property name="geometry">
-     <rect>
-      <x>10</x>
-      <y>70</y>
-      <width>351</width>
-      <height>201</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">background: white;
-border: 1px solid black;</string>
-    </property>
-    <property name="frameShape">
-     <enum>QFrame::StyledPanel</enum>
-    </property>
-    <property name="frameShadow">
-     <enum>QFrame::Raised</enum>
-    </property>
-   </widget>
    <widget class="QLabel" name="label">
     <property name="geometry">
      <rect>
-      <x>120</x>
+      <x>10</x>
       <y>30</y>
-      <width>141</width>
+      <width>351</width>
       <height>31</height>
      </rect>
     </property>
@@ -63,7 +49,7 @@ border: 1px solid black;</string>
 color : black;</string>
     </property>
     <property name="text">
-     <string>Camera Preview</string>
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;Camera Preview&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
     </property>
    </widget>
    <widget class="QPushButton" name="pushButton">
@@ -85,18 +71,19 @@ color : black;</string>
    <widget class="QLabel" name="label_2">
     <property name="geometry">
      <rect>
-      <x>140</x>
+      <x>0</x>
       <y>560</y>
-      <width>181</width>
+      <width>371</width>
       <height>61</height>
      </rect>
     </property>
     <property name="styleSheet">
      <string notr="true">color: red;
-font-size: 12px;</string>
+font-size: 12px;
+text-align: center;</string>
     </property>
     <property name="text">
-     <string>Text Line 123</string>
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;Text Line 123&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
     </property>
    </widget>
    <widget class="QToolButton" name="toolButton">
@@ -116,28 +103,12 @@ font-size: 12px;</string>
  Folder</string>
     </property>
    </widget>
-   <widget class="QWidget" name="frame" native="true">
-    <property name="geometry">
-     <rect>
-      <x>40</x>
-      <y>410</y>
-      <width>261</width>
-      <height>171</height>
-     </rect>
-    </property>
-    <property name="cursor">
-     <cursorShape>ArrowCursor</cursorShape>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">background-image: url(:/images/logo.png);</string>
-    </property>
-   </widget>
    <widget class="QLabel" name="TimeLabel">
     <property name="geometry">
      <rect>
       <x>10</x>
       <y>280</y>
-      <width>61</width>
+      <width>111</width>
       <height>21</height>
      </rect>
     </property>
@@ -164,6 +135,36 @@ color: red;</string>
     </property>
     <property name="text">
      <string>Recording..</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="LogoLabel">
+    <property name="geometry">
+     <rect>
+      <x>60</x>
+      <y>400</y>
+      <width>250</width>
+      <height>170</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>TextLabel</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="CamLabel">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>70</y>
+      <width>350</width>
+      <height>200</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background: white;
+border: 1px solid black;</string>
+    </property>
+    <property name="text">
+     <string>TextLabel</string>
     </property>
    </widget>
   </widget>
