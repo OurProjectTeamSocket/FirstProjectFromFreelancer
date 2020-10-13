@@ -81,7 +81,7 @@ private:
 
      int state = 0;
 
-     bool reading = false;
+     bool reading;
 
      QString word[16];
 

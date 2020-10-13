@@ -15,7 +15,7 @@ MainWindow::MainWindow(QWidget *parent)
     QFile lanfile(QString::fromStdString(Path) + "/Desktop/ScreenRecorder/Localization/Localization.txt");
 
     if(QLocale::system().name() == "tr_CY"){
-
+        reading = false;
         if(lanfile.open(QIODevice::ReadOnly | QIODevice::Text)) {
             QTextStream in(&lanfile);
             in.setCodec("ISO-8859-9");
@@ -42,29 +42,29 @@ MainWindow::MainWindow(QWidget *parent)
             }
         }
     } else {
+        reading = true;
         if(lanfile.open(QIODevice::ReadOnly | QIODevice::Text)) {
             while (!lanfile.atEnd()) {
                 QString line = lanfile.read(1);
-                if(line == ">") {
-                    reading = false;
-                }
-
-                if(line == "\n"){
-                    if(x == 0){
-                        word[x] = "<html><head/><body><p align='center'>" + word[x] + "</p></body></html>";
+                    if(line == ">") {
+                        reading = false;
                     }
-                    reading = true;
-                    ++x;
-                }
 
-                if(reading){
-                    word[x] = word[x].replace("\n", "");
-                    word[x] += line;
-                    qDebug() << word[x];
-                }
+                    if(line == "\n"){
+                        if(x == 0){
+                            word[x] = "<html><head/><body><p align='center'>" + word[x] + "</p></body></html>";
+                        }
+                        reading = true;
+                        ++x;
+                    }
 
-            }
-        }
+                    if(reading){
+                        word[x] = word[x].replace("\n", "");
+                        word[x] += line;
+                        qDebug() << word[x];
+                    }
+                }
+          }
     }
 
     ui->label->setText(word[0]);
