@@ -10,15 +10,41 @@ MainWindow::MainWindow(QWidget *parent)
     system(std::string("cd ~/Desktop/ && mkdir PlazaPCO").c_str());
     system(std::string("cd ~/Desktop/PlazaPCO && mkdir background ").c_str());
 
-    if(QLocale::Turkey){
-        QFile lfile(QString::fromStdString(Path) + "/Desktop/ScreenRecorder/");
-        if (!lfile.open(QIODevice::ReadOnly | QIODevice::Text)){
-            qDebug() << "1";
-            return;
-        }
-    } else {
+    int x = 0;
 
+    QFile lanfile(QString::fromStdString(Path) + "/Desktop/ScreenRecorder/Localization/Localization.txt");
+
+    if(QLocale::system().name() == "tr_CY"){
+
+    } else {
+        if(lanfile.open(QIODevice::ReadOnly | QIODevice::Text)) {
+            while (!lanfile.atEnd()) {
+                QString line = lanfile.read(1);
+                if(line == ">") {
+                    reading = false;
+                }
+
+                if(line == "\n"){
+                    if(x == 0){
+                        word[x] = "<html><head/><body><p align='center'>" + word[x] + "</p></body></html>";
+                    }
+                    reading = true;
+                    ++x;
+                }
+
+                if(reading){
+                    word[x] = word[x].replace("\n", "");
+                    word[x] += line;
+                    qDebug() << word[x];
+                }
+
+            }
+        }
     }
+
+    ui->label->setText(word[0]);
+    ui->pushButton->setText(word[1]);
+    ui->toolButton->setText(word[3]);
 
     ui->TimeLabel->setVisible(false);
     ui->RecLabel->setVisible(false);
@@ -136,12 +162,12 @@ void MainWindow::Recording(){
 
     qRec.setProcessChannelMode(QProcess::MergedChannels);
     qRec.setProgram( QString::fromStdString(Path) + "/Desktop/ScreenRecorder/ffmpeg");
-    qRec.setArguments({"-loop", "1", "-i", QString::fromStdString(Path) + "/Desktop/ScreenRecorder/background/background.jpg", "-framerate", "30", "-f", "avfoundation", "-i", "1", "-framerate", "30", "-f", "avfoundation", "-i", "0", "-f", "avfoundation", "-i", ":0", "-filter_complex", "[1:v]scale=960:600[a]; \
+    qRec.setArguments({"-ss", "0", "-loop", "1", "-i", QString::fromStdString(Path) + "/Desktop/ScreenRecorder/background/background.jpg", "-framerate", "30", "-f", "avfoundation", "-i", "1", "-framerate", "30", "-f", "avfoundation", "-i", "0", "-f", "avfoundation", "-i", ":0", "-filter_complex", "[1:v]scale=960:600[a]; \
                        [2:v]scale=240:150[b]; \
                        [0:v][a]overlay=32:60:shortest=1[c]; \
                        [c][b]overlay=main_w-overlay_w-10:(main_h/2)-75[video]", "-map", "[video]", QString::fromStdString(Path) + "/Desktop/ScreenRecorder/Output/" + date + ".mkv"});
     qRec.start();
-    qRec.waitForFinished(1);
+    qRec.waitForFinished(0);
 
     qDebug() << "Koniec: " << qRec.readAllStandardOutput();
 
@@ -164,7 +190,7 @@ void MainWindow::Converting(){
 void MainWindow::on_pushButton_clicked()
 {
     if(!recording){
-
+        ui->pushButton->setText(word[2]);
         QString DateString = QDate::currentDate().toString("MM-dd-yy");
         QString TimeString = QTime::currentTime().toString("hh:mm:ss");
 
@@ -182,6 +208,7 @@ void MainWindow::on_pushButton_clicked()
         timeElapsed.start();
         Recording();
     } else {
+        ui->pushButton->setText(word[1]);
         timer->stop();
         recTimer->stop();
         qRec.terminate();
@@ -190,6 +217,7 @@ void MainWindow::on_pushButton_clicked()
         ui->RecLabel->setVisible(false);
         ui->TimeLabel->setVisible(false);
         Converting();
+        state = 0;
     }
 
 }

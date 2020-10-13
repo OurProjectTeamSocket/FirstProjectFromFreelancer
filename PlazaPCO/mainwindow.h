@@ -13,6 +13,7 @@
 #include <QTime>
 #include <QFile>
 #include <QUrl>
+#include <QLocale>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -77,6 +78,10 @@ private:
      QImage qt_image;
 
      int state = 0;
+
+     bool reading = true;
+
+     QString word[16];
 
 };
 
