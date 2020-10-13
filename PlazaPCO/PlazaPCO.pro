@@ -22,13 +22,11 @@ HEADERS += \
 FORMS += \
     mainwindow.ui
 
-LIBS += -L/usr/local/lib
 
-INCLUDEPATH += /usr/local/include
 
-QT_CONFIG -= no-pkg-config
-CONFIG += link_pkgconfig
-PKGCONFIG += opencv
+
+
+
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

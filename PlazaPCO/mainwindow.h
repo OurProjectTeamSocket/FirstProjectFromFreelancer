@@ -14,6 +14,8 @@
 #include <QFile>
 #include <QUrl>
 #include <QLocale>
+#include <QTextCodec>
+#include <iostream>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -79,7 +81,7 @@ private:
 
      int state = 0;
 
-     bool reading = true;
+     bool reading = false;
 
      QString word[16];
 

@@ -16,6 +16,31 @@ MainWindow::MainWindow(QWidget *parent)
 
     if(QLocale::system().name() == "tr_CY"){
 
+        if(lanfile.open(QIODevice::ReadOnly | QIODevice::Text)) {
+            QTextStream in(&lanfile);
+            in.setCodec("ISO-8859-9");
+            while (!in.atEnd()) {
+                QString line = in.read(1);
+                if(line == ">") {
+                    reading = true;
+                }
+
+                if(line == "\n"){
+                    word[x] = word[x].replace(0, 1, "");
+                    if(x == 0){
+                        word[x] = "<html><head/><body><p align='center'>" + word[x] + "</p></body></html>";
+                    }
+                    reading = false;
+                    ++x;
+                }
+
+                if(reading){
+                    word[x] = word[x].replace("\n", "");
+                    word[x] = word[x].replace(">", "");
+                    word[x] += line;
+                }
+            }
+        }
     } else {
         if(lanfile.open(QIODevice::ReadOnly | QIODevice::Text)) {
             while (!lanfile.atEnd()) {
@@ -87,7 +112,6 @@ MainWindow::MainWindow(QWidget *parent)
     }
 
     ui->label_2->setText("<html><head/><body><p align='center'>" + redtext + "</p></body></html>");
-
     cap.open(0);
 
     if(cap.isOpened()){
@@ -95,7 +119,6 @@ MainWindow::MainWindow(QWidget *parent)
     } else {
         qDebug() << "Camera loaded";
     }
-
 }
 
 MainWindow::~MainWindow()
