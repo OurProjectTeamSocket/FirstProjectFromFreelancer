@@ -16,6 +16,7 @@
 #include <QLocale>
 #include <QTextCodec>
 #include <iostream>
+#include <QMessageBox>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -28,6 +29,8 @@ class MainWindow : public QMainWindow
 public:
     explicit MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
+
+    void MessageBox(QString ask, QString answer1, QString answer2);
 
     void timeFunc();
 

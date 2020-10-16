@@ -37,3 +37,10 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 
 RESOURCES += \
     images.qrc
+
+macx: LIBS += -L$$PWD/../../../../Downloads/chilkat-9.5.0-macosx/libStatic/ -lchilkat_x86_64
+
+INCLUDEPATH += $$PWD/../../../../Downloads/chilkat-9.5.0-macosx/include
+DEPENDPATH += $$PWD/../../../../Downloads/chilkat-9.5.0-macosx/include
+
+macx: PRE_TARGETDEPS += $$PWD/../../../../Downloads/chilkat-9.5.0-macosx/libStatic/libchilkat_x86_64.a

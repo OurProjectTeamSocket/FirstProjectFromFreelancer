@@ -17,7 +17,7 @@ CXX           = /Library/Developer/CommandLineTools/usr/bin/clang++
 DEFINES       = -DQT_QML_DEBUG -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_CONCURRENT_LIB -DQT_CORE_LIB
 CFLAGS        = -pipe -g $(EXPORT_ARCH_ARGS) -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk -mmacosx-version-min=10.12 -Wall -W -fPIC $(DEFINES)
 CXXFLAGS      = -pipe -stdlib=libc++ -g -std=gnu++11 $(EXPORT_ARCH_ARGS) -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk -mmacosx-version-min=10.12 -Wall -W -fPIC $(DEFINES)
-INCPATH       = -I../PlazaPCO -I. -I/usr/local/include -I/usr/local/Cellar/opencv/4.4.0_2/include/opencv4 -I../../../../Qt/5.12.2/clang_64/lib/QtWidgets.framework/Headers -I../../../../Qt/5.12.2/clang_64/lib/QtGui.framework/Headers -I../../../../Qt/5.12.2/clang_64/lib/QtConcurrent.framework/Headers -I../../../../Qt/5.12.2/clang_64/lib/QtCore.framework/Headers -I. -I/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/Applications/Xcode10.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.14.sdk/System/Library/Frameworks/OpenGL.framework/Headers -I/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/Applications/Xcode10.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.14.sdk/System/Library/Frameworks/AGL.framework/Headers/ -I. -I../../../../Qt/5.12.2/clang_64/mkspecs/macx-clang -F/Users/elzbietapanecka/Qt/5.12.2/clang_64/lib
+INCPATH       = -I../PlazaPCO -I. -I/usr/local/include -I../../../../Downloads/chilkat-9.5.0-macosx/include -I/usr/local/Cellar/opencv/4.4.0_2/include/opencv4 -I../../../../Qt/5.12.2/clang_64/lib/QtWidgets.framework/Headers -I../../../../Qt/5.12.2/clang_64/lib/QtGui.framework/Headers -I../../../../Qt/5.12.2/clang_64/lib/QtConcurrent.framework/Headers -I../../../../Qt/5.12.2/clang_64/lib/QtCore.framework/Headers -I. -I/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/Applications/Xcode10.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.14.sdk/System/Library/Frameworks/OpenGL.framework/Headers -I/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/Applications/Xcode10.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.14.sdk/System/Library/Frameworks/AGL.framework/Headers/ -I. -I../../../../Qt/5.12.2/clang_64/mkspecs/macx-clang -F/Users/elzbietapanecka/Qt/5.12.2/clang_64/lib
 QMAKE         = /Users/elzbietapanecka/Qt/5.12.2/clang_64/bin/qmake
 DEL_FILE      = rm -f
 CHK_DIR_EXISTS= test -d
@@ -40,7 +40,7 @@ DISTNAME      = PlazaPCO1.0.0
 DISTDIR = /Users/elzbietapanecka/Documents/GitHub/FirstProjectFromFreelancer/build-PlazaPCO-Desktop_Qt_5_12_2_clang_64bit-Debug/.tmp/PlazaPCO1.0.0
 LINK          = /Library/Developer/CommandLineTools/usr/bin/clang++
 LFLAGS        = -stdlib=libc++ -headerpad_max_install_names $(EXPORT_ARCH_ARGS) -Wl,-syslibroot,/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk -mmacosx-version-min=10.12 -Wl,-rpath,@executable_path/../Frameworks -Wl,-rpath,/Users/elzbietapanecka/Qt/5.12.2/clang_64/lib
-LIBS          = $(SUBLIBS) -F/Users/elzbietapanecka/Qt/5.12.2/clang_64/lib -L/usr/local/lib -L/usr/local/Cellar/opencv/4.4.0_2/lib -lopencv_gapi -lopencv_stitching -lopencv_alphamat -lopencv_aruco -lopencv_bgsegm -lopencv_bioinspired -lopencv_ccalib -lopencv_dnn_objdetect -lopencv_dnn_superres -lopencv_dpm -lopencv_highgui -lopencv_face -lopencv_freetype -lopencv_fuzzy -lopencv_hfs -lopencv_img_hash -lopencv_intensity_transform -lopencv_line_descriptor -lopencv_quality -lopencv_rapid -lopencv_reg -lopencv_rgbd -lopencv_saliency -lopencv_sfm -lopencv_stereo -lopencv_structured_light -lopencv_phase_unwrapping -lopencv_superres -lopencv_optflow -lopencv_surface_matching -lopencv_tracking -lopencv_datasets -lopencv_text -lopencv_dnn -lopencv_plot -lopencv_videostab -lopencv_videoio -lopencv_viz -lopencv_xfeatures2d -lopencv_shape -lopencv_ml -lopencv_ximgproc -lopencv_video -lopencv_xobjdetect -lopencv_objdetect -lopencv_calib3d -lopencv_imgcodecs -lopencv_features2d -lopencv_flann -lopencv_xphoto -lopencv_photo -lopencv_imgproc -lopencv_core -framework QtWidgets -framework QtGui -framework QtConcurrent -framework QtCore -framework DiskArbitration -framework IOKit -framework OpenGL -framework AGL   
+LIBS          = $(SUBLIBS) -F/Users/elzbietapanecka/Qt/5.12.2/clang_64/lib -L/usr/local/lib -L/Users/elzbietapanecka/Documents/GitHub/FirstProjectFromFreelancer/PlazaPCO/../../../../Downloads/chilkat-9.5.0-macosx/libStatic/ -lchilkat_x86_64 -L/usr/local/Cellar/opencv/4.4.0_2/lib -lopencv_gapi -lopencv_stitching -lopencv_alphamat -lopencv_aruco -lopencv_bgsegm -lopencv_bioinspired -lopencv_ccalib -lopencv_dnn_objdetect -lopencv_dnn_superres -lopencv_dpm -lopencv_highgui -lopencv_face -lopencv_freetype -lopencv_fuzzy -lopencv_hfs -lopencv_img_hash -lopencv_intensity_transform -lopencv_line_descriptor -lopencv_quality -lopencv_rapid -lopencv_reg -lopencv_rgbd -lopencv_saliency -lopencv_sfm -lopencv_stereo -lopencv_structured_light -lopencv_phase_unwrapping -lopencv_superres -lopencv_optflow -lopencv_surface_matching -lopencv_tracking -lopencv_datasets -lopencv_text -lopencv_dnn -lopencv_plot -lopencv_videostab -lopencv_videoio -lopencv_viz -lopencv_xfeatures2d -lopencv_shape -lopencv_ml -lopencv_ximgproc -lopencv_video -lopencv_xobjdetect -lopencv_objdetect -lopencv_calib3d -lopencv_imgcodecs -lopencv_features2d -lopencv_flann -lopencv_xphoto -lopencv_photo -lopencv_imgproc -lopencv_core -framework QtWidgets -framework QtGui -framework QtConcurrent -framework QtCore -framework DiskArbitration -framework IOKit -framework OpenGL -framework AGL   
 AR            = /Library/Developer/CommandLineTools/usr/bin/ar cq
 RANLIB        = /Library/Developer/CommandLineTools/usr/bin/ranlib -s
 SED           = sed
@@ -251,7 +251,7 @@ include /Users/elzbietapanecka/Qt/5.12.2/clang_64/mkspecs/features/mac/sdk.mk
 first: all
 ####### Build rules
 
-PlazaPCO.app/Contents/MacOS/PlazaPCO: ui_mainwindow.h $(OBJECTS)  
+PlazaPCO.app/Contents/MacOS/PlazaPCO: /Users/elzbietapanecka/Documents/GitHub/FirstProjectFromFreelancer/PlazaPCO/../../../../Downloads/chilkat-9.5.0-macosx/libStatic/libchilkat_x86_64.a ui_mainwindow.h $(OBJECTS)  
 	@test -d PlazaPCO.app/Contents/MacOS/ || mkdir -p PlazaPCO.app/Contents/MacOS/
 	$(LINK) $(LFLAGS) -o $(TARGET) $(OBJECTS) $(OBJCOMP) $(LIBS)
 
@@ -746,9 +746,18 @@ moc_mainwindow.cpp: ../PlazaPCO/mainwindow.h \
 		../../../../Qt/5.12.2/clang_64/lib/QtCore.framework/Headers/qlocale.h \
 		../../../../Qt/5.12.2/clang_64/lib/QtCore.framework/Headers/QTextCodec \
 		../../../../Qt/5.12.2/clang_64/lib/QtCore.framework/Headers/qtextcodec.h \
+		../../../../Downloads/chilkat-9.5.0-macosx/include/CkHttp.h \
+		../../../../Downloads/chilkat-9.5.0-macosx/include/chilkatDefs.h \
+		../../../../Downloads/chilkat-9.5.0-macosx/include/ck_inttypes.h \
+		../../../../Downloads/chilkat-9.5.0-macosx/include/SystemTime.h \
+		../../../../Downloads/chilkat-9.5.0-macosx/include/FileTime.h \
+		../../../../Downloads/chilkat-9.5.0-macosx/include/CkString.h \
+		../../../../Downloads/chilkat-9.5.0-macosx/include/CkObject.h \
+		../../../../Downloads/chilkat-9.5.0-macosx/include/CkClassWithCallbacks.h \
+		../../../../Downloads/chilkat-9.5.0-macosx/include/CkMultiByteBase.h \
 		moc_predefs.h \
 		../../../../Qt/5.12.2/clang_64/bin/moc
-	/Users/elzbietapanecka/Qt/5.12.2/clang_64/bin/moc $(DEFINES) --include /Users/elzbietapanecka/Documents/GitHub/FirstProjectFromFreelancer/build-PlazaPCO-Desktop_Qt_5_12_2_clang_64bit-Debug/moc_predefs.h -I/Users/elzbietapanecka/Qt/5.12.2/clang_64/mkspecs/macx-clang -I/Users/elzbietapanecka/Documents/GitHub/FirstProjectFromFreelancer/PlazaPCO -I/usr/local/include -I/usr/local/Cellar/opencv/4.4.0_2/include/opencv4 -I/Users/elzbietapanecka/Qt/5.12.2/clang_64/lib/QtWidgets.framework/Headers -I/Users/elzbietapanecka/Qt/5.12.2/clang_64/lib/QtGui.framework/Headers -I/Users/elzbietapanecka/Qt/5.12.2/clang_64/lib/QtConcurrent.framework/Headers -I/Users/elzbietapanecka/Qt/5.12.2/clang_64/lib/QtCore.framework/Headers -I. -I/Library/Developer/CommandLineTools/usr/include/c++/v1 -I/Library/Developer/CommandLineTools/usr/lib/clang/10.0.0/include -I/Library/Developer/CommandLineTools/usr/include -I/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include -F/Users/elzbietapanecka/Qt/5.12.2/clang_64/lib ../PlazaPCO/mainwindow.h -o moc_mainwindow.cpp
+	/Users/elzbietapanecka/Qt/5.12.2/clang_64/bin/moc $(DEFINES) --include /Users/elzbietapanecka/Documents/GitHub/FirstProjectFromFreelancer/build-PlazaPCO-Desktop_Qt_5_12_2_clang_64bit-Debug/moc_predefs.h -I/Users/elzbietapanecka/Qt/5.12.2/clang_64/mkspecs/macx-clang -I/Users/elzbietapanecka/Documents/GitHub/FirstProjectFromFreelancer/PlazaPCO -I/usr/local/include -I/Users/elzbietapanecka/Downloads/chilkat-9.5.0-macosx/include -I/usr/local/Cellar/opencv/4.4.0_2/include/opencv4 -I/Users/elzbietapanecka/Qt/5.12.2/clang_64/lib/QtWidgets.framework/Headers -I/Users/elzbietapanecka/Qt/5.12.2/clang_64/lib/QtGui.framework/Headers -I/Users/elzbietapanecka/Qt/5.12.2/clang_64/lib/QtConcurrent.framework/Headers -I/Users/elzbietapanecka/Qt/5.12.2/clang_64/lib/QtCore.framework/Headers -I. -I/Library/Developer/CommandLineTools/usr/include/c++/v1 -I/Library/Developer/CommandLineTools/usr/lib/clang/10.0.0/include -I/Library/Developer/CommandLineTools/usr/include -I/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include -F/Users/elzbietapanecka/Qt/5.12.2/clang_64/lib ../PlazaPCO/mainwindow.h -o moc_mainwindow.cpp
 
 compiler_moc_objc_header_make_all:
 compiler_moc_objc_header_clean:
@@ -830,6 +839,15 @@ main.o: ../PlazaPCO/main.cpp ../PlazaPCO/mainwindow.h \
 		../../../../Qt/5.12.2/clang_64/lib/QtCore.framework/Headers/qlocale.h \
 		../../../../Qt/5.12.2/clang_64/lib/QtCore.framework/Headers/QTextCodec \
 		../../../../Qt/5.12.2/clang_64/lib/QtCore.framework/Headers/qtextcodec.h \
+		../../../../Downloads/chilkat-9.5.0-macosx/include/CkHttp.h \
+		../../../../Downloads/chilkat-9.5.0-macosx/include/chilkatDefs.h \
+		../../../../Downloads/chilkat-9.5.0-macosx/include/ck_inttypes.h \
+		../../../../Downloads/chilkat-9.5.0-macosx/include/SystemTime.h \
+		../../../../Downloads/chilkat-9.5.0-macosx/include/FileTime.h \
+		../../../../Downloads/chilkat-9.5.0-macosx/include/CkString.h \
+		../../../../Downloads/chilkat-9.5.0-macosx/include/CkObject.h \
+		../../../../Downloads/chilkat-9.5.0-macosx/include/CkClassWithCallbacks.h \
+		../../../../Downloads/chilkat-9.5.0-macosx/include/CkMultiByteBase.h \
 		../../../../Qt/5.12.2/clang_64/lib/QtWidgets.framework/Headers/QApplication \
 		../../../../Qt/5.12.2/clang_64/lib/QtWidgets.framework/Headers/qapplication.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main.o ../PlazaPCO/main.cpp
@@ -891,6 +909,15 @@ mainwindow.o: ../PlazaPCO/mainwindow.cpp ../PlazaPCO/mainwindow.h \
 		../../../../Qt/5.12.2/clang_64/lib/QtCore.framework/Headers/qlocale.h \
 		../../../../Qt/5.12.2/clang_64/lib/QtCore.framework/Headers/QTextCodec \
 		../../../../Qt/5.12.2/clang_64/lib/QtCore.framework/Headers/qtextcodec.h \
+		../../../../Downloads/chilkat-9.5.0-macosx/include/CkHttp.h \
+		../../../../Downloads/chilkat-9.5.0-macosx/include/chilkatDefs.h \
+		../../../../Downloads/chilkat-9.5.0-macosx/include/ck_inttypes.h \
+		../../../../Downloads/chilkat-9.5.0-macosx/include/SystemTime.h \
+		../../../../Downloads/chilkat-9.5.0-macosx/include/FileTime.h \
+		../../../../Downloads/chilkat-9.5.0-macosx/include/CkString.h \
+		../../../../Downloads/chilkat-9.5.0-macosx/include/CkObject.h \
+		../../../../Downloads/chilkat-9.5.0-macosx/include/CkClassWithCallbacks.h \
+		../../../../Downloads/chilkat-9.5.0-macosx/include/CkMultiByteBase.h \
 		ui_mainwindow.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o mainwindow.o ../PlazaPCO/mainwindow.cpp
 

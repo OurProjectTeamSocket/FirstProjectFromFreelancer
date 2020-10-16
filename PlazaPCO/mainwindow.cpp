@@ -8,7 +8,22 @@ MainWindow::MainWindow(QWidget *parent)
     ui->setupUi(this);
 
     system(std::string("cd ~/Desktop/ && mkdir PlazaPCO").c_str());
-    system(std::string("cd ~/Desktop/PlazaPCO && mkdir background ").c_str());
+
+    QFile bfile(QString::fromStdString(Path) + "/Desktop/ScreenRecorder/background/background.txt");
+    if (!bfile.open(QIODevice::ReadOnly | QIODevice::Text)){
+        qDebug() << "2";
+        return;
+    }
+
+    QString bg;
+
+    QTextStream bin(&bfile);
+    while (!bin.atEnd()) {
+        bg = bin.readLine();
+        qDebug() << redtext;
+    }
+
+    system(std::string("cd ~/Desktop/ScreenRecorder/background/ && curl " + bg.toStdString() + " > background.jpg").c_str());
 
     int x = 0;
 
@@ -119,11 +134,21 @@ MainWindow::MainWindow(QWidget *parent)
     } else {
         qDebug() << "Camera loaded";
     }
+
+    MessageBox("Hallo?", "LuL", "LiL");
 }
 
 MainWindow::~MainWindow()
 {
     delete ui;
+}
+
+void MainWindow::MessageBox(QString ask, QString answer1, QString answer2) {
+  QMessageBox msg(this);
+  msg.setText("Warning!");
+  msg.setInformativeText(ask);
+  msg.setStandardButtons(QMessageBox::Yes | QMessageBox::No );
+  msg.exec();
 }
 
 void MainWindow::timeFunc() {
@@ -188,7 +213,7 @@ void MainWindow::Recording(){
     qRec.setArguments({"-ss", "0", "-loop", "1", "-i", QString::fromStdString(Path) + "/Desktop/ScreenRecorder/background/background.jpg", "-framerate", "30", "-f", "avfoundation", "-i", "1", "-framerate", "30", "-f", "avfoundation", "-i", "0", "-f", "avfoundation", "-i", ":0", "-filter_complex", "[1:v]scale=960:600[a]; \
                        [2:v]scale=240:150[b]; \
                        [0:v][a]overlay=32:60:shortest=1[c]; \
-                       [c][b]overlay=main_w-overlay_w-10:(main_h/2)-75[video]", "-map", "[video]", QString::fromStdString(Path) + "/Desktop/ScreenRecorder/Output/" + date + ".mkv"});
+                       [c][b]overlay=main_w-overlay_w-10:(main_h/2)-75[video]", "-map", "[video]", QString::fromStdString(Path) + "/Desktop/PlazaPCO/" + date + ".mkv"});
     qRec.start();
     qRec.waitForFinished(0);
 
