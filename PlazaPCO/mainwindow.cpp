@@ -129,13 +129,13 @@ MainWindow::MainWindow(QWidget *parent)
     ui->label_2->setText("<html><head/><body><p align='center'>" + redtext + "</p></body></html>");
     cap.open(0);
 
-    if(cap.isOpened()){
-        qDebug() << "Camera don't load";
+    if(!cap.isOpened()){
+        qDebug() << "Camera haven't loaded";
+        MessageBox("Camera haven't loaded", word[10], word[9]);
     } else {
         qDebug() << "Camera loaded";
     }
 
-    MessageBox("Hallo?", "LuL", "LiL");
 }
 
 MainWindow::~MainWindow()
@@ -145,9 +145,11 @@ MainWindow::~MainWindow()
 
 void MainWindow::MessageBox(QString ask, QString answer1, QString answer2) {
   QMessageBox msg(this);
+  QAbstractButton* pButtonYes = msg.addButton(answer1, QMessageBox::YesRole);
+  msg.addButton(answer2, QMessageBox::NoRole);
+
   msg.setText("Warning!");
   msg.setInformativeText(ask);
-  msg.setStandardButtons(QMessageBox::Yes | QMessageBox::No );
   msg.exec();
 }
 
