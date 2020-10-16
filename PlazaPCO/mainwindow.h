@@ -17,6 +17,7 @@
 #include <QTextCodec>
 #include <iostream>
 #include <QMessageBox>
+#include <QDir>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }

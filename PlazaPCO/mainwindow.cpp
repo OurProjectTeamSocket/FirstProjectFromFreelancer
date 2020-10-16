@@ -9,6 +9,12 @@ MainWindow::MainWindow(QWidget *parent)
 
     system(std::string("cd ~/Desktop/ && mkdir PlazaPCO").c_str());
 
+    QString path2 = QString::fromStdString(Path) + "/Desktop/PlazaPCO/";
+
+    if (!QDir(path2).exists()) {
+        MessageBox(word[5], word[10], word[9]);
+    }
+
     QFile bfile(QString::fromStdString(Path) + "/Desktop/ScreenRecorder/background/background.txt");
     if (!bfile.open(QIODevice::ReadOnly | QIODevice::Text)){
         qDebug() << "2";
