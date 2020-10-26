@@ -29,11 +29,11 @@ MainWindow::MainWindow(QWidget *parent)
         qDebug() << redtext;
     }
 
-    system(std::string("cd ~/Desktop/ScreenRecorder/background/ && curl " + bg.toStdString() + " > background.jpg").c_str());
+    system(std::string("cd /Applications/PlazaPCO.app/Contents/Resources/ScreenRecorder/background/ && curl " + bg.toStdString() + " > background.jpg").c_str());
 
     int x = 0;
 
-    QFile lanfile(QString::fromStdString(Path) + "/Desktop/ScreenRecorder/Localization/Localization.txt");
+    QFile lanfile(QString::fromStdString(Path) + "/Applications/PlazaPCO.app/Contents/Resources/ScreenRecorder/Localization/Localization.txt");
 
     if(QLocale::system().name() == "tr_CY"){
         reading = false;
@@ -100,7 +100,7 @@ MainWindow::MainWindow(QWidget *parent)
     connect(recTimer, &QTimer::timeout, this, QOverload<>::of(&MainWindow::recAnim));
     camTimer->start();
 
-    QFile lfile(QString::fromStdString(Path) + "/Desktop/ScreenRecorder/Logo/logo.txt");
+    QFile lfile("/Applications/PlazaPCO.app/Contents/Resources/ScreenRecorder/Logo/logo.txt");
     if (!lfile.open(QIODevice::ReadOnly | QIODevice::Text)){
         qDebug() << "1";
         return;
@@ -112,14 +112,14 @@ MainWindow::MainWindow(QWidget *parent)
         qDebug() << logo;
     }
 
-    QString url = QString::fromStdString(Path) + "/Desktop/ScreenRecorder/Logo/" + logo;
+    QString url = QString::fromStdString(Path) + "/Applications/PlazaPCO.app/Contents/Resources/ScreenRecorder/Logo/" + logo;
     qDebug() << url;
     QPixmap img(url);
     img.scaled(ui->LogoLabel->width(), ui->LogoLabel->height());
     ui->LogoLabel->setPixmap(img);
     ui->LogoLabel->setScaledContents(true);
 
-    QFile rfile(QString::fromStdString(Path) + "/Desktop/ScreenRecorder/Line_Under_Logo/Line_Under_Logo.txt");
+    QFile rfile("/Applications/PlazaPCO.app/Contents/Resources/ScreenRecorder/Line_Under_Logo/Line_Under_Logo.txt");
     if (!rfile.open(QIODevice::ReadOnly | QIODevice::Text)){
         qDebug() << "2";
         return;
@@ -184,7 +184,7 @@ void MainWindow::GetPicFormCam(){
 
 void MainWindow::recAnim(){
     if(state == 0){
-        QString url = QString::fromStdString(Path) + "/Desktop/ScreenRecorder/Images/recording1.png";
+        QString url = "/Applications/PlazaPCO.app/Contents/Resources/ScreenRecorder/Images/recording1.png";
         qDebug() << url;
         QPixmap img(url);
         img.scaled(ui->LogoLabel->width(), ui->LogoLabel->height());
@@ -192,7 +192,7 @@ void MainWindow::recAnim(){
         ui->RecLabel->setScaledContents(true);
         ++state;
     } else if(state == 1) {
-        QString url = QString::fromStdString(Path) + "/Desktop/ScreenRecorder/Images/recording2.png";
+        QString url = "/Applications/PlazaPCO.app/Contents/Resources/ScreenRecorder/Images/recording2.png";
         qDebug() << url;
         QPixmap img(url);
         img.scaled(ui->LogoLabel->width(), ui->LogoLabel->height());
@@ -200,7 +200,7 @@ void MainWindow::recAnim(){
         ui->RecLabel->setScaledContents(true);
         ++state;
     } else {
-        QString url = QString::fromStdString(Path) + "/Desktop/ScreenRecorder/Images/recording3.png";
+        QString url = "/Applications/PlazaPCO.app/Contents/Resources/ScreenRecorder/Images/recording3.png";
         qDebug() << url;
         QPixmap img(url);
         img.scaled(ui->LogoLabel->width(), ui->LogoLabel->height());
@@ -217,8 +217,8 @@ void MainWindow::Recording(){
     qDebug() << "Nagrywam!";
 
     qRec.setProcessChannelMode(QProcess::MergedChannels);
-    qRec.setProgram( QString::fromStdString(Path) + "/Desktop/ScreenRecorder/ffmpeg");
-    qRec.setArguments({"-ss", "0", "-loop", "1", "-i", QString::fromStdString(Path) + "/Desktop/ScreenRecorder/background/background.jpg", "-framerate", "30", "-f", "avfoundation", "-i", "1", "-framerate", "30", "-f", "avfoundation", "-i", "0", "-f", "avfoundation", "-i", ":0", "-filter_complex", "[1:v]scale=960:600[a]; \
+    qRec.setProgram("/Applications/PlazaPCO.app/Contents/Resources/ScreenRecorder/ffmpeg");
+    qRec.setArguments({"-ss", "0", "-loop", "1", "-i", "/Applications/PlazaPCO.app/Contents/Resources/ScreenRecorder/background/background.jpg", "-framerate", "30", "-f", "avfoundation", "-i", "1", "-framerate", "30", "-f", "avfoundation", "-i", "0", "-f", "avfoundation", "-i", ":0", "-filter_complex", "[1:v]scale=960:600[a]; \
                        [2:v]scale=240:150[b]; \
                        [0:v][a]overlay=32:60:shortest=1[c]; \
                        [c][b]overlay=main_w-overlay_w-10:(main_h/2)-75[video]", "-map", "[video]", QString::fromStdString(Path) + "/Desktop/PlazaPCO/" + date + ".mkv"});
@@ -234,7 +234,7 @@ void MainWindow::Converting(){
     qDebug() << "Konwertuję!";
 
     qCon.setProcessChannelMode(QProcess::MergedChannels);
-    qCon.setProgram( QString::fromStdString(Path) + "/Desktop/ScreenRecorder/ffmpeg");
+    qCon.setProgram("/Applications/PlazaPCO.app/Contents/Resources/ScreenRecorder/ffmpeg");
     qCon.setArguments({"-loglevel", "panic", "-i", QString::fromStdString(Path) + "/Desktop/ScreenRecorder/Output/" + date + ".mkv", "-codec", "copy", QString::fromStdString(Path) + "/Desktop/ScreenRecorder/Output/" + date + ".mp4"});
     qCon.start();
     qCon.waitForFinished();
@@ -280,6 +280,6 @@ void MainWindow::on_pushButton_clicked()
 
 void MainWindow::on_toolButton_clicked()
 {
-    std::string x = "open " + Path + "/Desktop/ScreenRecorder/Output/";
+    std::string x = "open " + Path + "/Desktop/PlazaPCO/";
     system(x.c_str());
 }
